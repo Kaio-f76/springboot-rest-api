@@ -1,0 +1,21 @@
+# Ignora diretorios de build
+/target/
+/out/
+
+# Ignora arquivos do Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
+
+# Ignora configurações de IDEs
+/.idea/
+/.vscode/
+*.iml
+*.class
+*.project
+*.settings/
+
+# Ignora arquivos temporarios e logs
+*.log
+*.tmp
+
+# Ignora arquivos de configuração locais
+src/main/resources/application.properties
