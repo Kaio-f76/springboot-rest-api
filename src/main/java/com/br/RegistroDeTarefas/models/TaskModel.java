@@ -31,6 +31,15 @@ public class TaskModel implements Serializable {
       
 	public TaskModel() {
 	}
+	
+	public TaskModel(String nome, String descricao, String status) {
+		super();
+		this.nome = nome;
+		this.descricao = descricao;
+		this.status = status;
+	}
+
+
 
 	public UUID getId() {
 		return id;
