@@ -114,5 +114,22 @@ curl -i -X DELETE http://localhost:8081/task/{id}
 - Campos obrigatórios: `nome`, `descricao`, `status`.
 - O campo `status` representa se a tarefa está ativa (true/false).
 - Banco de dados em memória H2 usado para desenvolvimento e testes.
+- Para configuração do application.properties:
+```
+spring.application.name=RegistroDeTarefas
+server.port=8080 
+
+### database H2 configurations
+spring.datasource.url=jdbc:h2:mem:"escolha o nome do banco"
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username="nome do adm do banco"
+spring.datasource.password="senha para o adm, porém caso queria pode deixar em branco"
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+spring.jpa.hibernate.ddl-auto=update
+### observações: para acessar o banco use a url "http://localhost:{nome da port que escolheu}/h2-console/"
+
+```
 
 
