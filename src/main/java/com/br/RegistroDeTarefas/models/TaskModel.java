@@ -19,13 +19,13 @@ public class TaskModel implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 	
-    @Column(nullable = false, unique = true, length = 10)
+    @Column(nullable = false, unique = true, length = 60)
 	private String nome;
     
-    @Column(nullable = false, unique = false, length = 30)
+    @Column(nullable = false, unique = false, length = 60)
 	private String descricao;
     
-    @Column(nullable = false, unique = false, length = 5)
+    @Column(nullable = false, unique = false, length = 60)
 	private String status;
 
       
