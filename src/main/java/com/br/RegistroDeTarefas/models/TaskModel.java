@@ -9,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_Task")
@@ -19,13 +21,20 @@ public class TaskModel implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 	
-    @Column(nullable = false, unique = true, length = 60)
+	
+	@NotBlank(message = "Nome é obrigatório")
+	@Size(max = 30, message = "Nome deve ter no máximo 30 caracteres")
+    @Column(nullable = false, unique = true, length = 30)
 	private String nome;
     
+	@NotBlank(message = "descrição é obrigatório")
+	@Size(max = 30, message = "descrição deve ter no máximo 60 caracteres")
     @Column(nullable = false, unique = false, length = 60)
 	private String descricao;
     
-    @Column(nullable = false, unique = false, length = 60)
+	@NotBlank(message = "Status é obrigatório")
+	@Size(max = 30, message = "Status deve ter no máximo 15 caracteres")
+    @Column(nullable = false, unique = false, length = 15)
 	private String status;
 
       

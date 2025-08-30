@@ -1,4 +1,4 @@
-//Teste unitário
+//Teste de integração
 package com.br.RegistroDeTarefas;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +14,7 @@ import com.br.RegistroDeTarefas.models.TaskModel;
 import com.br.RegistroDeTarefas.services.TaskService;
 
 @SpringBootTest
-class RegistroDeTarefasApplicationTests {
+class TaskServiceTests {
 
     @Autowired
     private TaskService taskservice;

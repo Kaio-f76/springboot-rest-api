@@ -22,14 +22,17 @@ public class TaskService {
 		return taskrepository.save(taskmodel);
 	}
 	
+	@Transactional(readOnly = true)
 	public List<TaskModel> findALL() {
 		return taskrepository.findAll();
 	}
 	
+	@Transactional(readOnly = true)
 	public Optional<TaskModel> findById(UUID id) {
 		return taskrepository.findById(id);
 	}
 	
+	@Transactional
 	public TaskModel update(UUID id, TaskModel taskupdate) {
 		TaskModel taskmodel = taskrepository.findById(id).orElseThrow();
 		taskmodel.setNome(taskupdate.getNome());
@@ -38,6 +41,7 @@ public class TaskService {
 		return taskrepository.save(taskmodel);
 	}
 	
+	@Transactional
 	public void delete(UUID id) {
 		taskrepository.deleteById(id);
 	}

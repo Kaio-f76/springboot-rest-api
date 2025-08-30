@@ -17,37 +17,46 @@ import org.springframework.web.bind.annotation.RestController;
 import com.br.RegistroDeTarefas.models.TaskModel;
 import com.br.RegistroDeTarefas.services.TaskService;
 
+import jakarta.validation.Valid;
+
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/tasks")
 public class TaskController {
 	@Autowired
 	private TaskService taskservice;
 	
 	@PostMapping
-	public TaskModel create(@RequestBody TaskModel taskmodel) {
-		return taskservice.save(taskmodel);
+	public ResponseEntity<TaskModel> create(@Valid @RequestBody TaskModel taskmodel) {
+		TaskModel savedTask = taskservice.save(taskmodel);
+        return ResponseEntity.ok(savedTask);
 	}
 	
 	@GetMapping
-	public List<TaskModel> list() {
-		return taskservice.findALL();
+	public ResponseEntity<List<TaskModel>> list() {
+		return ResponseEntity.ok(taskservice.findALL());
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<TaskModel> find(@PathVariable UUID id) {
-		return taskservice.findById(id)
-				.map(ResponseEntity::ok)
-				.orElse(ResponseEntity.notFound().build());
+	        return taskservice.findById(id)
+	            .map(ResponseEntity::ok)
+	            .orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PutMapping("/{id}")
-	public TaskModel update(@PathVariable UUID id, @RequestBody TaskModel taskmodel) {
-		return taskservice.update(id, taskmodel);
+	public ResponseEntity<TaskModel> update(@PathVariable UUID id, @Valid @RequestBody TaskModel taskupdate) {
+		try {
+            TaskModel updatedTask = taskservice.update(id, taskupdate);
+            return ResponseEntity.ok(updatedTask);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }	
 	}
-	
+		
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable UUID id) {
+	public ResponseEntity<Void> delete(@PathVariable UUID id) {
 		taskservice.delete(id);
+        return ResponseEntity.noContent().build();
 	}
 	
 	
