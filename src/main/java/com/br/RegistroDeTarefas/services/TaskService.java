@@ -33,6 +33,12 @@ public class TaskService {
 	}
 	
 	@Transactional
+	public List<TaskModel> findByStatus(String status) {
+	    return taskrepository.findByStatus(status);
+	}
+
+	
+	@Transactional
 	public TaskModel update(UUID id, TaskModel taskupdate) {
 		TaskModel taskmodel = taskrepository.findById(id).orElseThrow();
 		taskmodel.setNome(taskupdate.getNome());

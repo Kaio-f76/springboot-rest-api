@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Minhas Tarefas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Minhas Tarefas</h2>
+            <button onclick="logout()" class="btn btn-outline-danger">Sair</button>
+        </div>
+
+        <!-- Formulário de criação/edição -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title" id="formTitle">Criar Nova Tarefa</h5>
+                <form id="taskForm">
+                    <input type="hidden" id="taskId">
+                    <div class="mb-2">
+                        <input type="text" id="nome" class="form-control" placeholder="Nome da tarefa" required>
+                    </div>
+                    <div class="mb-2">
+                        <input type="text" id="descricao" class="form-control" placeholder="Descrição" required>
+                    </div>
+                    <div class="mb-2">
+                        <select id="status" class="form-select" required>
+                            <option value="">Status</option>
+                            <option value="PENDENTE">Pendente</option>
+                            <option value="EM ANDAMENTO">Em andamento</option>
+                            <option value="CONCLUIDA">Concluída</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success">Salvar</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelarEdicao()">Cancelar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Filtrar por Status -->
+        <div class="input-group mb-4">
+            <select id="filtroStatus" class="form-select">
+                <option value="">Filtrar por status</option>
+                <option value="PENDENTE">Pendente</option>
+                <option value="EM_ANDAMENTO">Em andamento</option>
+                <option value="CONCLUIDA">Concluída</option>
+            </select>
+            <button class="btn btn-info" onclick="filtrarPorStatus()">Filtrar</button>
+        </div>
+
+
+        <!-- Lista de tarefas -->
+        <div id="taskList" class="row g-3"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

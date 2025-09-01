@@ -40,6 +40,23 @@ class TaskServiceTests {
         assertTrue(foundTask.isPresent());
         assertEquals(savedTask.getId(), foundTask.get().getId());
     }
+    
+    @Test
+    public void testFindTasksByStatus() {
+        TaskModel task1 = new TaskModel("Task A", "Descrição A", "PENDENTE");
+        TaskModel task2 = new TaskModel("Task B", "Descrição B", "PENDENTE");
+        TaskModel task3 = new TaskModel("Task C", "Descrição C", "CONCLUIDA");
+
+        taskservice.save(task1);
+        taskservice.save(task2);
+        taskservice.save(task3);
+
+        List<TaskModel> pendentes = taskservice.findByStatus("PENDENTE");
+
+        assertEquals(2, pendentes.size());
+        assertTrue(pendentes.stream().allMatch(t -> t.getStatus().equals("PENDENTE")));
+    }
+
 
     @Test
     public void testUpdateTask() {

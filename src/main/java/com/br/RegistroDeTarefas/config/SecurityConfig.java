@@ -50,7 +50,8 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
+        http.cors(cors -> {}) 
+        	.csrf(csrf -> csrf.disable())
         	.headers(headers -> headers.frameOptions(frame -> frame.disable())) // <-- necessário para H2
             .authorizeHttpRequests(auth -> auth
             .requestMatchers("/auth/**", "/swagger-ui/**", "/v3/api-docs/**", "/h2-console/**").permitAll()                .anyRequest().authenticated()
