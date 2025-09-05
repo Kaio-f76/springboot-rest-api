@@ -28,12 +28,12 @@ public class TaskModel implements Serializable {
 	private String nome;
     
 	@NotBlank(message = "descrição é obrigatório")
-	@Size(max = 30, message = "descrição deve ter no máximo 60 caracteres")
+	@Size(max = 60, message = "descrição deve ter no máximo 60 caracteres")
     @Column(nullable = false, unique = false, length = 60)
 	private String descricao;
     
 	@NotBlank(message = "Status é obrigatório")
-	@Size(max = 30, message = "Status deve ter no máximo 15 caracteres")
+	@Size(max = 15, message = "Status deve ter no máximo 15 caracteres")
     @Column(nullable = false, unique = false, length = 15)
 	private String status;
 

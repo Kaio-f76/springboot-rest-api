@@ -7,6 +7,27 @@ Este projeto é uma aplicação web desenvolvida com Spring Boot, utilizando arq
 
 ---
 
+## Estrutura de Pastas - Projeto Spring Boot
+
+| Pasta                      | Propósito                                                                 |
+|---------------------------|---------------------------------------------------------------------------|
+| `config`                  | Configurações gerais (segurança, CORS, JWT, etc.)                         |
+| `controllers`             | Camada de entrada da API (endpoints REST)                                 |
+| `exceptions`              | Tratamento de erros personalizados                                        |
+| `models`                  | Entidades JPA ou DTOs                                                     |
+| `repositories`            | Interfaces de acesso ao banco com Spring Data JPA                         |
+| `services`                | Regras de negócio e lógica da aplicação                                   |
+| `utils`                   | Classes auxiliares e utilitárias                                          |
+| `resources/static`        | Arquivos estáticos (CSS, JS, imagens) — usado se houver frontend          |
+| `resources/templates`     | Templates HTML (Thymeleaf, Freemarker) — se aplicável                     |
+| `application.properties`  | Configuração principal do projeto                                         |
+| `application-test.properties` | Configuração específica para ambiente de testes                    |
+| `src/test/java/...`       | Testes unitários e de integração, organizados por pacotes                 |
+
+
+---
+
+
 ## Tecnologias Utilizadas
 
 ### Spring Boot
